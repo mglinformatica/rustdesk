@@ -3,37 +3,45 @@
      width="1000" height="286.6"
      viewBox="0 0 1000 286.6">
 
-  <rect width="1000" height="286.6" fill="#e5e5e5"/>
+  <!-- Fundo -->
+  <rect width="1000" height="286.6"
+        fill="#e5e5e5"/>
 
-  <!-- Globo azul MGL -->
-  <g transform="translate(452 12) scale(0.75)"
+  <!-- Globo azul MGL centralizado -->
+  <g transform="translate(452 8) scale(0.75)"
      fill="none"
      stroke="#168CEB"
      stroke-width="7"
      stroke-linecap="round"
      stroke-linejoin="round">
+
     <circle cx="64" cy="64" r="55"/>
     <ellipse cx="64" cy="64" rx="27" ry="55"/>
     <path d="M9 64 H119"/>
     <path d="M20 34 Q64 55 108 34"/>
     <path d="M20 94 Q64 73 108 94"/>
     <path d="M64 9 V119"/>
+
   </g>
 
-  <!-- Nome original -->
-  <text x="500" y="190"
+  <!-- Nome MGL centralizado -->
+  <text x="500" y="177"
         text-anchor="middle"
         font-family="Arial, sans-serif"
         font-weight="bold"
-        font-size="40"
-        fill="#0071ff">RUSTDESK</text>
+        font-size="56"
+        fill="#0071ff">
+    MGL
+  </text>
 
-  <!-- Subtitulo original -->
-  <text x="500" y="228"
+  <!-- Subtitulo centralizado -->
+  <text x="500" y="220"
         text-anchor="middle"
         font-family="Arial, sans-serif"
         font-weight="600"
-        font-size="23"
-        fill="#0071ff">Your remote desktop</text>
+        font-size="25"
+        fill="#0071ff">
+    Acesso Remoto Seguro
+  </text>
 
 </svg>
