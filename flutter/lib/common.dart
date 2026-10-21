@@ -3819,7 +3819,55 @@ class _LogoState extends State<_Logo> {
 }
 
 // max 300 x 60
-Widget loadLogo() => const _Logo();
+
+Widget loadLogo() {
+  return Container(
+    constraints: const BoxConstraints(
+      maxWidth: 190,
+      minHeight: 65,
+    ),
+    padding: const EdgeInsets.symmetric(
+      horizontal: 8,
+      vertical: 10,
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          'assets/icon.svg',
+          width: 38,
+          height: 38,
+        ),
+        const SizedBox(width: 8),
+        Flexible(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'MGL',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: MyTheme.accent,
+                ),
+              ),
+              const Text(
+                'Acesso Remoto Seguro',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 
 Widget loadIcon(double size) {
   return Image.asset('assets/icon.png',
