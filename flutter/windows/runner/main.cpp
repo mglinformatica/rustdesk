@@ -55,7 +55,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   std::vector<std::string> command_line_arguments =
       GetCommandLineArguments();
 
-  // Remove possible trailing whitespace from command line arguments
+  // Remove possible trailing whitespace from command line arguments.
   for (auto& argument : command_line_arguments) {
     argument.erase(argument.find_last_not_of(" \n\r\t"));
   }
@@ -94,7 +94,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
         command_line_arguments.end());
   }
 
-  // Keep the internal application identity unchanged for compatibility.
+  // Preserve the internal RustDesk identity for compatibility.
   std::wstring app_name = L"RustDesk";
 
   FUNC_RUSTDESK_GET_APP_NAME get_rustdesk_app_name =
@@ -109,8 +109,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
     }
   }
 
-  // URI links dispatch
-  HWND hwnd = ::FindWindowW(getWindowClassName(), app_name.c_str());
+  // MGL visual titles.
+  const std::wstring mgl_main_title =
+      L"MGL - Acesso Remoto Seguro";
+
+  const std::wstring mgl_install_title =
+      L"MGL - Instalacao";
+
+  const std::wstring mgl_cm_title =
+      L"MGL - Gerenciador de Conexoes";
+
+  // Identify the existing MGL main window.
+  HWND hwnd = ::FindWindowW(
+      getWindowClassName(),
+      mgl_main_title.c_str());
 
   if (hwnd != NULL) {
     bool allow_multiple_instances = false;
@@ -142,7 +154,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
     }
   }
 
-  // Attach to console when present or when debugging.
+  // Attach to console when present or while debugging.
   if (!::AttachConsole(ATTACH_PARENT_PROCESS) &&
       ::IsDebuggerPresent())
   {
@@ -154,7 +166,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 
   flutter::DartProject project(L"data");
 
-  // Connection manager: hide icon from taskbar.
+  // Connection manager window.
   bool is_cm_page = false;
   auto cmParam = std::string("--cm");
 
@@ -165,6 +177,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
     is_cm_page = true;
   }
 
+  // Installation window.
   bool is_install_page = false;
 
   if (!command_line_arguments.empty() &&
@@ -200,15 +213,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 
   Win32Desktop::FitToWorkArea(origin, size);
 
-  // MGL - customized window titles.
+  // Configure the MGL window title.
   std::wstring window_title;
 
   if (is_cm_page) {
-    window_title = L"MGL - Gerenciador de Conexoes";
+    window_title = mgl_cm_title;
   } else if (is_install_page) {
-    window_title = L"MGL - Instalacao";
+    window_title = mgl_install_title;
   } else {
-    window_title = L"MGL - Acesso Remoto Seguro";
+    window_title = mgl_main_title;
   }
 
   if (!window.CreateAndShow(
