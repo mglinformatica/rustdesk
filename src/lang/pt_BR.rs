@@ -145,7 +145,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Failed to make direct connection to remote desktop", "Falha ao fazer conexão direta ao desktop remoto"),
         ("Set Password", "Definir Senha"),
         ("OS Password", "Senha do Sistema"),
-        ("install_tip", "Para garantir o funcionamento correto do MGL - Acesso Remoto Seguro, inclusive durante solicitações de permissão do Windows (UAC), recomendamos instalar o aplicativo neste computador. Clique no botão abaixo para continuar."),
+        ("install_tip", "Recomendamos instalar o Sistema MGL Remoto para garantir o acesso remoto completo, inclusive nas solicitações de permissão do Windows (UAC)"),
         ("Click to upgrade", "Iniciar atualização"),
         ("Configure", "Configurar"),
         ("config_acc", "Para controlar seu computador remotamente, você precisa conceder ao RustDesk permissões de \"Acessibilidade\"."),
